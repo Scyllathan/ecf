@@ -1,0 +1,52 @@
+@font-face {
+  font-family: 'Bahnschrift';
+  src: url('../font/bahnschrift.ttf') format('ttf');
+}
+
+.h-15 {
+  height: 15vh;
+}
+
+.yellow-border {
+  border: solid #ffc107;
+}
+
+.font-brand {
+  color: #ffc107;
+  font-family: 'Bahnschrift', 'sans-serif';
+  font-style: italic;
+}
+
+@media screen and ( max-width: 576px ) {
+  .w-co {
+    width: 100%;
+  }
+
+  .font-brand {
+    font-size: 4vh;
+  }
+
+  .h-25 {
+    min-height: 25vh;
+  }
+}
+
+@media screen and ( min-width: 576px ){
+  .w-co {
+    width: 75%;
+  }
+
+  .font-brand {
+    font-size: 7vh;
+  }
+
+  .h-25 {
+    min-height: 25vh;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .h-25 {
+    min-height: 30vh;
+  }
+}

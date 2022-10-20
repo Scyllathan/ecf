@@ -20,22 +20,9 @@ class ClientController extends AbstractController
     public function __construct(private ManagerRegistry $doctrine) {}
 
     #[Route('/admin/liste-client', name: 'app_client_list')]
-    public function index(Request $request): Response
+    public function index(): Response
     {
-        $entityManager = $this->doctrine->getManager();
-        $repository = $entityManager->getRepository(Client::class);
-        $clients = $repository->findAll();
-
-        foreach ($clients as $client) {
-            $form = $this->createForm(ClientType::class, $client, [
-                'action' => $this->generateUrl('app_update_client', ['id' => $client->getId()]),]);
-            $form->handleRequest($request);
-            $client->form = $form->createView();
-        }
-
-        return $this->render('client/index.html.twig', [
-            'clients' => $clients,
-        ]);
+        return $this->render('client/index.html.twig');
     }
 
     #[Route('/admin/update-client/{id}', name: 'app_update_client')]
@@ -46,8 +33,8 @@ class ClientController extends AbstractController
         $client = $repository->find($id);
 
         if ($client) {
-            if (isset($_POST['client']['active'])) {
-                $client->setActive($_POST['client']['active']);
+            if (isset($_POST['active'])) {
+                $client->setActive($_POST['active']);
             } else {
                 $client->setActive(false);
             }

@@ -7,6 +7,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Uid\Uuid as Uuid;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
@@ -49,18 +52,23 @@ class Client
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\OneToOne(mappedBy: 'client', cascade: ['persist', 'remove'])]
-    private ?ClientGrants $clientGrants = null;
-
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Branch::class, orphanRemoval: true)]
     private Collection $branches;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: ClientGrants::class, orphanRemoval: true)]
+    private Collection $clientGrants;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: InstallPerm::class, orphanRemoval: true)]
+    private Collection $installPerms;
 
     public function __construct()
     {
         $this->branches = new ArrayCollection();
+        $this->clientGrants = new ArrayCollection();
+        $this->installPerms = new ArrayCollection();
     }
 
-    public function getId(): ?Uuid
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -185,23 +193,6 @@ class Client
         return $this;
     }
 
-    public function getClientGrants(): ?ClientGrants
-    {
-        return $this->clientGrants;
-    }
-
-    public function setClientGrants(ClientGrants $clientGrants): self
-    {
-        // set the owning side of the relation if necessary
-        if ($clientGrants->getClient() !== $this) {
-            $clientGrants->setClient($this);
-        }
-
-        $this->clientGrants = $clientGrants;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Branch>
      */
@@ -226,6 +217,66 @@ class Client
             // set the owning side to null (unless already changed)
             if ($branch->getClient() === $this) {
                 $branch->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ClientGrants>
+     */
+    public function getClientGrants(): Collection
+    {
+        return $this->clientGrants;
+    }
+
+    public function addClientGrant(ClientGrants $clientGrant): self
+    {
+        if (!$this->clientGrants->contains($clientGrant)) {
+            $this->clientGrants->add($clientGrant);
+            $clientGrant->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClientGrant(ClientGrants $clientGrant): self
+    {
+        if ($this->clientGrants->removeElement($clientGrant)) {
+            // set the owning side to null (unless already changed)
+            if ($clientGrant->getClient() === $this) {
+                $clientGrant->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, InstallPerm>
+     */
+    public function getInstallPerms(): Collection
+    {
+        return $this->installPerms;
+    }
+
+    public function addInstallPerm(InstallPerm $installPerm): self
+    {
+        if (!$this->installPerms->contains($installPerm)) {
+            $this->installPerms->add($installPerm);
+            $installPerm->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInstallPerm(InstallPerm $installPerm): self
+    {
+        if ($this->installPerms->removeElement($installPerm)) {
+            // set the owning side to null (unless already changed)
+            if ($installPerm->getClient() === $this) {
+                $installPerm->setClient(null);
             }
         }
 

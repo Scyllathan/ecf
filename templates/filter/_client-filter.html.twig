@@ -1,0 +1,30 @@
+<div class="row d-flex justify-content-center gx-5 px-sm-5 mt-5">
+    <div class="col-12">
+        <div class="bg-light yellow-border rounded my-2 my-sm-3 p-3">
+            <div class="row">
+                <div class="col-12 col-md-6 mb-3">
+                    <input type="text" id="nameResearch" placeholder="Nom du partenaire"
+                           class="form-control w-75" onkeyup="filterName()">
+                </div>
+                <div class="col-12 col-md-6 mb-3 d-flex justify-content-md-end">
+                    <input type="text" id="idResearch" placeholder="Identifiant du partenaire"
+                           class="form-control w-75" onkeyup="filterId()">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-warning"
+                            onclick="activeStatus()">Actif
+                    </button>
+                    <button type="button" class="btn btn-warning"
+                            onclick="inactiveStatus()">Inactif
+                    </button>
+                    <button type="button" class="btn btn-warning"
+                            onclick="allStatus()">Tous
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

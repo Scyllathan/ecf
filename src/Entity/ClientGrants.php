@@ -21,16 +21,17 @@ class ClientGrants
     #[ORM\Column(nullable: true)]
     private array $perms = [];
 
-    #[ORM\OneToOne(inversedBy: 'clientGrants', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'clientGrants')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Client $client = null;
 
-    #[ORM\OneToMany(mappedBy: 'clientGrants', targetEntity: InstallPerm::class, orphanRemoval: true)]
-    private Collection $installPerms;
+    #[ORM\OneToMany(mappedBy: 'clientGrants', targetEntity: Branch::class)]
+    private Collection $branch;
 
     public function __construct()
     {
         $this->installPerms = new ArrayCollection();
+        $this->branch = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -67,7 +68,7 @@ class ClientGrants
         return $this->client;
     }
 
-    public function setClient(Client $client): self
+    public function setClient(?Client $client): self
     {
         $this->client = $client;
 
@@ -75,29 +76,29 @@ class ClientGrants
     }
 
     /**
-     * @return Collection<int, InstallPerm>
+     * @return Collection<int, Branch>
      */
-    public function getInstallPerms(): Collection
+    public function getBranch(): Collection
     {
-        return $this->installPerms;
+        return $this->branch;
     }
 
-    public function addInstallPerm(InstallPerm $installPerm): self
+    public function addBranch(Branch $branch): self
     {
-        if (!$this->installPerms->contains($installPerm)) {
-            $this->installPerms->add($installPerm);
-            $installPerm->setClientGrants($this);
+        if (!$this->branch->contains($branch)) {
+            $this->branch->add($branch);
+            $branch->setClientGrants($this);
         }
 
         return $this;
     }
 
-    public function removeInstallPerm(InstallPerm $installPerm): self
+    public function removeBranch(Branch $branch): self
     {
-        if ($this->installPerms->removeElement($installPerm)) {
+        if ($this->branch->removeElement($branch)) {
             // set the owning side to null (unless already changed)
-            if ($installPerm->getClientGrants() === $this) {
-                $installPerm->setClientGrants(null);
+            if ($branch->getClientGrants() === $this) {
+                $branch->setClientGrants(null);
             }
         }
 

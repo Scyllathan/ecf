@@ -14,10 +14,11 @@ class ClientType extends AbstractType
     {
         $builder
             ->add('active', CheckboxType::class, [
-                'label' => "Actif",
-                'label_attr' => [ 'class' => 'me-2' ],
+                'label_attr' => [
+                    'class' => 'checkbox-switch',
+                ],
                 'required' => false,
-                'attr' => [ 'onclick' => 'submit()',
+                'attr' => [ 'onclick' => 'if (confirm("Êtes-vous sûr de vouloir activer/désactiver l\'intégration du client à tous les clubs ?")) { submit()};',
                 ],
             ])
         ;

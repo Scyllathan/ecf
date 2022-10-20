@@ -45,7 +45,11 @@ class InstallPerm
 
     #[ORM\ManyToOne(inversedBy: 'installPerms')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?ClientGrants $clientGrants = null;
+    private ?Client $client = null;
+
+    #[ORM\OneToOne(inversedBy: 'installPerm', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Branch $branch = null;
 
     public function getId(): ?int
     {
@@ -172,14 +176,26 @@ class InstallPerm
         return $this;
     }
 
-    public function getClientGrants(): ?ClientGrants
+    public function getClient(): ?Client
     {
-        return $this->clientGrants;
+        return $this->client;
     }
 
-    public function setClientGrants(?ClientGrants $clientGrants): self
+    public function setClient(?Client $client): self
     {
-        $this->clientGrants = $clientGrants;
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getBranch(): ?Branch
+    {
+        return $this->branch;
+    }
+
+    public function setBranch(Branch $branch): self
+    {
+        $this->branch = $branch;
 
         return $this;
     }

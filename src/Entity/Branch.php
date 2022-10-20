@@ -16,9 +16,6 @@ class Branch
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?bool $active = false;
-
     #[ORM\Column(length: 255)]
     private ?string $managerName = null;
 
@@ -31,7 +28,13 @@ class Branch
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?InstallPerm $installPerms = null;
+    private ?User $user = null;
+
+    #[ORM\ManyToOne(cascade: ['persist'], inversedBy: 'branch')]
+    private ?ClientGrants $clientGrants = null;
+
+    #[ORM\OneToOne(mappedBy: 'branch', cascade: ['persist', 'remove'])]
+    private ?InstallPerm $installPerm = null;
 
     public function getId(): ?int
     {
@@ -46,18 +49,6 @@ class Branch
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function isActive(): ?bool
-    {
-        return $this->active;
-    }
-
-    public function setActive(bool $active): self
-    {
-        $this->active = $active;
 
         return $this;
     }
@@ -98,14 +89,43 @@ class Branch
         return $this;
     }
 
-    public function getInstallPerms(): ?InstallPerm
+    public function getUser(): ?User
     {
-        return $this->installPerms;
+        return $this->user;
     }
 
-    public function setInstallPerms(InstallPerm $installPerms): self
+    public function setUser(User $user): self
     {
-        $this->installPerms = $installPerms;
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getClientGrants(): ?ClientGrants
+    {
+        return $this->clientGrants;
+    }
+
+    public function setClientGrants(?ClientGrants $clientGrants): self
+    {
+        $this->clientGrants = $clientGrants;
+
+        return $this;
+    }
+
+    public function getInstallPerm(): ?InstallPerm
+    {
+        return $this->installPerm;
+    }
+
+    public function setInstallPerm(InstallPerm $installPerm): self
+    {
+        // set the owning side of the relation if necessary
+        if ($installPerm->getBranch() !== $this) {
+            $installPerm->setBranch($this);
+        }
+
+        $this->installPerm = $installPerm;
 
         return $this;
     }

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des partenaires{% endblock %}
+
+{% block body %}
+    <div class="row d-flex justify-content-center gx-5 px-sm-5 mt-5">
+        <div class="col-12">
+            <div class="bg-light yellow-border rounded my-2 my-sm-3 p-3">
+                <div class="row mt-3">
+                    <div class="col-md-6 col-12 mb-2 mb-mt-0">
+                        {{ form_start(form) }}
+                        <div class="w-75">{{ form_row(form.branchId) }}</div>
+                        {{ form_row(form.active) }}
+                        <div class="d-md-none d-inline"><hr></div>
+                    </div>
+                    <div class="col">
+                        {{ form_row(form.membersRead) }}
+                        {{ form_row(form.membersWrite) }}
+                        {{ form_row(form.membersAdd) }}
+                        {{ form_row(form.membersPaymentSchedulesRead) }}
+                        {{ form_row(form.membersStatisticRead) }}
+                        {{ form_row(form.membersSubscriptionRead) }}
+                        {{ form_row(form.membersSchedulesRead) }}
+                        {{ form_row(form.membersSchedulesWrite) }}
+                        {{ form_row(form.paymentDayRead) }}
+                    </div>
+                </div>
+                <div class="row mb-3 mt-4 mt-md-5">
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-warning">Créer l'accès au club</button>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

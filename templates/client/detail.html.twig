@@ -12,22 +12,28 @@
 
         {% include 'client/_client.html.twig' %}
 
-        {% include 'filter/_branch-filter.html.twig' %}
+        {% if 'ROLE_ADMIN' in app.user.roles or 'ROLE_CLIENT' in app.user.roles %}
+            {% include 'filter/_branch-filter.html.twig' %}
+        {% endif %}
 
-        {% for branch in branches %}
-            {% if 'ROLE_ADMIN' in app.user.roles or 'ROLE_CLIENT' in app.user.roles or ('ROLE_BRANCH' in app.user.roles and branch
-            .user.id == app.user.id) %}
-            <div class="branch">
-                {% include 'branch/_branch.html.twig' %}
-                {% include 'branch/_branch-perms.html.twig' %}
-            </div>
-            {% endif %}
-        {% endfor %}
+        <div id="branchList"></div>
+
+        <div class="row">
+            <!-- Emplacement pagination -->
+            <nav class="pagination-container d-flex justify-content-center">
+                <div id="pagination-numbers">
+
+                </div>
+            </nav>
+        </div>
     </div>
+    <div id="rolesUser" style="display: none">[{{ app.user.roles | join(', ') }}]</div>
 
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('js/branchHtmlGenerator.js') }}"></script>
+    <script src="{{ asset('js/paginationDetail.js') }}"></script>
     <script src="{{ asset('js/plusMinusChange.js') }}"></script>
     <script src="{{ asset('js/branchIdFilter.js') }}"></script>
     <script src="{{ asset('js/branchActiveStatus.js') }}"></script>

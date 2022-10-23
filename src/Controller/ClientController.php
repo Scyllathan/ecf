@@ -49,6 +49,10 @@ class ClientController extends AbstractController
     #[Route('/branch/fiche-client/{id}', name: 'app_client')]
     public function clientDetail(string $id, Request $request): Response
     {
+        if ($this->getUser()->getLastConnection() === null) {
+            return $this->redirectToRoute('app_change_password');
+        }
+
         $entityManager = $this->doctrine->getManager();
         $repository = $entityManager->getRepository(Client::class);
         $client = $repository->find($id);
@@ -64,24 +68,6 @@ class ClientController extends AbstractController
         $repository = $entityManager->getRepository(Branch::class);
         $branches = $repository->findBy(array('client' => $id));
 
-        foreach ($branches as $branch) {
-            if ($branch->getInstallPerm()) {
-                $installPermForm = $this->createForm(InstallPermType::class, $branch->getInstallPerm(), [
-                    'action' => $this->generateUrl('app_update_install_perm', ['id' => $branch->getInstallPerm()->getId()]),
-                ]);
-                $installPermForm->handleRequest($request);
-                $branch->installForm = $installPermForm->createView();
-            }
-
-            if ($branch->getClientGrants()) {
-                $clientGrantsForm = $this->createForm(ClientGrantsType::class, $branch->getClientGrants(), [
-                    'action' => $this->generateUrl('app_update_client_grants', ['id' => $branch->getClientGrants()->getId
-                    ()]),
-                ]);
-                $branch->grantsForm = $clientGrantsForm->createView();
-            }
-        }
-
         return $this->render('client/detail.html.twig', ['client' => $client, 'clientForm' => $clientForm->createView
         (), 'branches' => $branches]);
     }
@@ -89,6 +75,10 @@ class ClientController extends AbstractController
     #[Route('/admin/plus-d-info/{id}', name: 'app_more_about')]
     public function moreAboutClient(string $id, Request $request): Response
     {
+        if ($this->getUser()->getLastConnection() === null) {
+            return $this->redirectToRoute('app_change_password');
+        }
+
         $entityManager = $this->doctrine->getManager();
         $repository = $entityManager->getRepository(Client::class);
         $client = $repository->find($id);
@@ -113,9 +103,9 @@ class ClientController extends AbstractController
         $clientGrants = $repository->find($id);
 
         if ($clientGrants) {
-            if (isset($_POST['client_grants']['active']))
+            if (isset($_POST['active']))
             {
-                $clientGrants->setActive($_POST['client_grants']['active']);
+                $clientGrants->setActive($_POST['active']);
             } else {
                 $clientGrants->setActive(false);
             }
@@ -129,70 +119,87 @@ class ClientController extends AbstractController
         return $this->redirectToRoute('app_client_list');
     }
 
-    #[Route('/admin/update-install-perm/{id}', name: 'app_update_install_perm')]
-    public function updateInstallPerm(int $id): Response
+    #[Route('/admin/update-install-perm1/{id}', name: 'app_update_install_perm1')]
+    public function updateInstallPerm1(int $id): Response
     {
         $entityManager = $this->doctrine->getManager();
         $repository = $entityManager->getRepository(InstallPerm::class);
         $installPerm = $repository->find($id);
 
         if ($installPerm) {
-            if (isset($_POST['install_perm']['membersRead'])) {
-                $installPerm->setMembersRead($_POST['install_perm']['membersRead']);
+            if (isset($_POST['membersRead'])) {
+                $installPerm->setMembersRead(true);
             } else {
                 $installPerm->setMembersRead(false);
             }
 
-            if (isset($_POST['install_perm']['membersWrite'])) {
-                $installPerm->setMembersWrite($_POST['install_perm']['membersWrite']);
+            if (isset($_POST['membersWrite'])) {
+                $installPerm->setMembersWrite(true);
             } else {
                 $installPerm->setMembersWrite(false);
             }
 
-            if (isset($_POST['install_perm']['membersAdd'])) {
-                $installPerm->setMembersAdd($_POST['install_perm']['membersAdd']);
+            if (isset($_POST['membersAdd'])) {
+                $installPerm->setMembersAdd(true);
             } else {
                 $installPerm->setMembersAdd(false);
             }
 
-            if (isset($_POST['install_perm']['membersProductsAdd'])) {
-                $installPerm->setMembersProductsAdd($_POST['install_perm']['membersProductsAdd']);
+            if (isset($_POST['membersProductsAdd'])) {
+                $installPerm->setMembersProductsAdd(true);
             } else {
                 $installPerm->setMembersProductsAdd(false);
             }
 
-            if (isset($_POST['install_perm']['membersPaymentSchedulesRead'])) {
-                $installPerm->setMembersPaymentSchedulesRead($_POST['install_perm']['membersPaymentSchedulesRead']);
+            if (isset($_POST['membersPaymentSchedulesRead'])) {
+                $installPerm->setMembersPaymentSchedulesRead(true);
             } else {
                 $installPerm->setMembersPaymentSchedulesRead(false);
             }
 
-            if (isset($_POST['install_perm']['membersStatisticRead'])) {
-                $installPerm->setMembersStatisticRead($_POST['install_perm']['membersStatisticRead']);
+            $entityManager->persist($installPerm);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_client', ['id' => $installPerm->getClient()->getId()]);
+        }
+
+        return $this->redirectToRoute('app_client_list');
+    }
+
+    #[Route('/admin/update-install-perm2/{id}', name: 'app_update_install_perm2')]
+    public function updateInstallPerm2(int $id): Response
+    {
+        $entityManager = $this->doctrine->getManager();
+        $repository = $entityManager->getRepository(InstallPerm::class);
+        $installPerm = $repository->find($id);
+
+        if ($installPerm) {
+            if (isset($_POST['membersStatisticRead'])) {
+                $installPerm->setMembersStatisticRead(true);
             } else {
                 $installPerm->setMembersStatisticRead(false);
             }
 
-            if (isset($_POST['install_perm']['membersSubscriptionRead'])) {
-                $installPerm->setMembersSubscriptionRead($_POST['install_perm']['membersSubscriptionRead']);
+            if (isset($_POST['membersSubscriptionRead'])) {
+                $installPerm->setMembersSubscriptionRead(true);
             } else {
                 $installPerm->setMembersSubscriptionRead(false);
             }
 
-            if (isset($_POST['install_perm']['membersSchedulesRead'])) {
-                $installPerm->setMembersSchedulesRead($_POST['install_perm']['membersSchedulesRead']);
+            if (isset($_POST['membersSchedulesRead'])) {
+                $installPerm->setMembersSchedulesRead(true);
             } else {
                 $installPerm->setMembersSchedulesRead(false);
             }
 
-            if (isset($_POST['install_perm']['membersSchedulesWrite'])) {
-                $installPerm->setMembersSchedulesWrite($_POST['install_perm']['membersSchedulesWrite']);
+            if (isset($_POST['membersSchedulesWrite'])) {
+                $installPerm->setMembersSchedulesWrite(true);
             } else {
                 $installPerm->setMembersSchedulesWrite(false);
             }
 
-            if (isset($_POST['install_perm']['paymentDayRead'])) {
-                $installPerm->setPaymentDayRead($_POST['install_perm']['paymentDayRead']);
+            if (isset($_POST['paymentDayRead'])) {
+                $installPerm->setPaymentDayRead(true);
             } else {
                 $installPerm->setPaymentDayRead(false);
             }
@@ -209,6 +216,10 @@ class ClientController extends AbstractController
     #[Route('/admin/ajouter-contrat/{id}', name: 'app_new_client_grants')]
     public function addClientGrants(string $id, Request $request): Response
     {
+        if ($this->getUser()->getLastConnection() === null) {
+            return $this->redirectToRoute('app_change_password');
+        }
+
         $entityManager = $this->doctrine->getManager();
         $repository = $entityManager->getRepository(Client::class);
         $client = $repository->find($id);
@@ -292,6 +303,6 @@ class ClientController extends AbstractController
 
         }
 
-        return $this->render('client/new-client-grants.html.twig', [ 'form' => $form->createView() ]);
+        return $this->render('client/new-client-grants.html.twig', [ 'form' => $form->createView(), 'client' => $client ]);
     }
 }

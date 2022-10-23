@@ -4,9 +4,11 @@
                 <span class="mx-3 text-dark d-sm-inline d-none">Utilisateur connecté : {{app.user
                     .userIdentifier}}</span>
             {% if 'ROLE_ADMIN' in app.user.roles %}
-            <a class="text-dark mx-3 text-decoration-none" href="{{ path('app_client_list') }}"><b>Partenaires</b></a>
+            <a class="text-dark mx-3 text-decoration-none font-title" href="{{ path('app_client_list')
+            }}"><b>Partenaires</b></a>
             {% endif %}
-            <a class="text-dark text-decoration-none" href="{{ path('app_logout') }}"><b>Déconnexion</b></a>
+            <a class="text-dark text-decoration-none font-title" href="{{ path('app_logout')
+            }}"><b>Déconnexion</b></a>
         </div>
     </nav>
 {% endif %}

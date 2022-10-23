@@ -3,7 +3,7 @@ function plusMinusChange() {
     let minus = document.getElementsByClassName('minus')
 
     for (let i = 0; i < plus.length; i++) {
-        if (plus[i].style.display === "none") {
+        if (plus[i].style.display) {
             plus[i].style.display = ""
             minus[i].style.display = "none"
         } else {

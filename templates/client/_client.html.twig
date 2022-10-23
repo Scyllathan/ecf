@@ -11,8 +11,8 @@
                     {% endif %}
                 </div>
                 <div class="col mb-2">
-                    <p class="mb-1">{{ client.id }}</p>
-                    <p class="mb-1"><b>{{ client.name }}</b></p>
+                    <p class="mb-1" id="clientId">{{ client.id }}</p>
+                    <h1 class="mb-1 h4 font-title"><b>{{ client.name }}</b></h1>
                     <a href="http://{{ client.url }}" target="_blank">{{ client.url }}</a>
                 </div>
             </div>
@@ -31,12 +31,13 @@
                         </div>
                     {% endif %}
                 </div>
+                {% if 'ROLE_ADMIN' in app.user.roles %}
                 <div class="col d-flex justify-content-end">
                     <a href="{{ path('app_more_about', { 'id': client.id }) }}" role="button" class="btn
                     btn-warning">Plus
                         d'informations</a>
                 </div>
-
+                {% endif %}
             </div>
         </div>
     </div>

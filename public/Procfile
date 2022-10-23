@@ -1,0 +1,3 @@
+web: vendor/bin/heroku-php-apache2 public/
+index: index.php index.html index.html
+DirectoryIndex: index.php index.html index.html

@@ -118,7 +118,7 @@ class DefaultController extends AbstractController
         return $this->render('client/client-list-json.html.twig', [ 'json' => $json ]);
     }
 
-    #[Route('/admin/branch-list-json/{id}')]
+    #[Route('/branch/branch-list-json/{id}')]
     public function branchListJson(string $id): Response
     {
         $entityManager = $this->doctrine->getManager();
@@ -134,8 +134,32 @@ class DefaultController extends AbstractController
         $normalizer = new ObjectNormalizer(null, null, null, null, null, null, $defaultContext);
 
         $serializer = new Serializer([$normalizer], [$encoder]);
-        $json = $serializer->serialize($branches, 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES => ['user']]);
+        $json = $serializer->serialize($branches, 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES =>
+            ['user']]);
 
         return $this->render('branch/branch-list-json.html.twig', [ 'json' => $json ]);
+    }
+
+    #[Route('/branch/user-id-json/{id}')]
+    public function userIdJson(int $id): Response
+    {
+        $entityManager = $this->doctrine->getManager();
+        $repository = $entityManager->getRepository(Branch::class);
+        $branch = $repository->find($id);
+        $user = $branch->getUser();
+
+        $encoder = new JsonEncoder();
+        $defaultContext = [
+            AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object, $format, $context) {
+                return $object->getId();
+            },
+        ];
+        $normalizer = new ObjectNormalizer(null, null, null, null, null, null, $defaultContext);
+
+        $serializer = new Serializer([$normalizer], [$encoder]);
+        $json = $serializer->serialize($user, 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES =>
+            ['password', 'lastConnection', 'email', 'roles', 'userIdentifier']]);
+
+        return $this->render('branch/user-id-json.html.twig', [ 'json' => $json ]);
     }
 }

@@ -1,9 +1,12 @@
 window.addEventListener('load', () => {
     const clientId = document.getElementById('clientId').innerText;
-    const urlJson = 'http://ecf.localhost/admin/branch-list-json/' + clientId;
+    const urlJson = 'http://ecf.localhost/branch/branch-list-json/' + clientId;
     const roleUser = document.getElementById('rolesUser').innerText;
+    const idUser = document.getElementById('idUser').innerText.replace(/[[\]]/g,'');
 
     httpRequest = new XMLHttpRequest();
+    httpRequest.open('POST', urlJson , true);
+    httpRequest.send();
 
     httpRequest.onreadystatechange = function() {
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -13,19 +16,41 @@ window.addEventListener('load', () => {
             let branchList = document.getElementById('branchList');
 
             for (let i = 0; i < branches.length; i++) {
-                let roleAdmin = roleUser.indexOf('ROLE_ADMIN');
-                let logoUrl = logoUrlGenerator(branches[i]);
-                let installPerm = installPermGenerator(branches[i]);
-                let checked = checkedGenerator(branches[i]);
-                let installPermForm1 = installPerm1FormGenerator(branches[i], roleAdmin);
-                let installPermForm2 = installPermForm2Generator(branches[i], roleAdmin)
-                let secureSubmission = secureSubmissionGenerator(branches[i]);
-                let clientGrantsForm = clientGrantsFormGenerator(branches[i], checked, secureSubmission, roleAdmin);
+                let userHttpRequest = new XMLHttpRequest();
+                let idUrl = 'http://ecf.localhost/branch/user-id-json/' + branches[i].id;
+                userHttpRequest.open('POST', idUrl, true);
+                userHttpRequest.send();
 
-                branchList.innerHTML += branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
-                if (branches[i].installPerm) {
-                    branchList.innerHTML += installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
+                let branchUserId;
+
+                userHttpRequest.onreadystatechange = function() {
+                    if (userHttpRequest.readyState === XMLHttpRequest.DONE) {
+                        let dataUserId = userHttpRequest.response;
+                        let dataUserIdReformat = dataUserId.replace(/&quot;/ig,'"');
+                        let user = JSON.parse(dataUserIdReformat);
+                        branchUserId = user.id;
+
+                        let roleAdmin = roleUser.indexOf('ROLE_ADMIN');
+                        let roleClient = roleUser.indexOf('ROLE_CLIENT');
+                        let roleBranch = roleUser.indexOf('ROLE_BRANCH');
+                        let logoUrl = logoUrlGenerator(branches[i]);
+                        let installPerm = installPermGenerator(branches[i]);
+                        let checked = checkedGenerator(branches[i]);
+                        let installPermForm1 = installPerm1FormGenerator(branches[i], roleAdmin);
+                        let installPermForm2 = installPermForm2Generator(branches[i], roleAdmin)
+                        let secureSubmission = secureSubmissionGenerator(branches[i]);
+                        let clientGrantsForm = clientGrantsFormGenerator(branches[i], checked, secureSubmission, roleAdmin);
+
+                        if (roleAdmin > -1 || roleClient > -1 || (roleBranch > -1 && parseInt(branchUserId) === parseInt(idUser))) {
+                            branchList.innerHTML += branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
+                            if (branches[i].installPerm) {
+                                branchList.innerHTML += installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
+                            }
+                        }
+                    }
                 }
+
+
             }
 
             const paginationNumbers = document.getElementById("pagination-numbers");
@@ -41,9 +66,6 @@ window.addEventListener('load', () => {
             // pas encore prête
         }
     };
-
-    httpRequest.open('POST', urlJson , true);
-    httpRequest.send();
 })
 
 function logoUrlGenerator(branch) {

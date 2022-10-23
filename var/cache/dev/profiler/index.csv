@@ -4793,3 +4793,6 @@ f15e13,::1,POST,http://ecf.localhost/login,1666553314,,302
 d3c803,::1,GET,http://ecf.localhost/,1666553314,,302
 73c4cf,::1,GET,http://ecf.localhost/admin/liste-client,1666553314,,200
 f14e5c,::1,POST,http://ecf.localhost/admin/client-list-json,1666553315,,200
+2a7ecc,::1,POST,http://ecf.localhost/branch/branch-list-json/34636432-6634-3735-2d34-3666632d3131,1666555738,,200
+e607c6,::1,POST,http://ecf.localhost/branch/user-id-json/1,1666555739,,200
+66358f,::1,POST,http://ecf.localhost/branch/user-id-json/3,1666555739,,200

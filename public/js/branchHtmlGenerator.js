@@ -47,21 +47,18 @@ window.addEventListener('load', () => {
                                 branchList.innerHTML += installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
                             }
                         }
+                        const paginationNumbers = document.getElementById("pagination-numbers");
+                        const paginatedList = document.getElementById("branchList");
+                        const listItems = [...branchList.getElementsByClassName('branch')];
+
+                        const paginationLimit = 2;
+                        const pageCount = Math.ceil(listItems.length / paginationLimit);
+
+                        getPaginationNumbers(pageCount, paginationNumbers, paginationLimit, listItems);
+                        setCurrentPage(1, paginationLimit, listItems);
                     }
                 }
-
-
             }
-
-            const paginationNumbers = document.getElementById("pagination-numbers");
-            const paginatedList = document.getElementById("branchList");
-            const listItems = [...branchList.getElementsByClassName('branch')];
-
-            const paginationLimit = 2;
-            const pageCount = Math.ceil(listItems.length / paginationLimit);
-
-            getPaginationNumbers(pageCount, paginationNumbers, paginationLimit, listItems);
-            setCurrentPage(1, paginationLimit, listItems);
         } else {
             // pas encore prête
         }

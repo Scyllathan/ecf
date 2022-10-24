@@ -39,7 +39,7 @@ httpRequest.onreadystatechange = function() {
     }
 };
 
-httpRequest.open('POST', 'http://ecf.localhost/admin/client-list-json', true);
+httpRequest.open('POST', '../../admin/client-list-json', true);
 httpRequest.send();
 
 function shortDescriptionGenerator(client) {

@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
     const clientId = document.getElementById('clientId').innerText;
-    const urlJson = 'http://ecf.localhost/branch/branch-list-json/' + clientId;
+    const urlJson = '../../branch/branch-list-json/' + clientId;
     const roleUser = document.getElementById('rolesUser').innerText;
     const idUser = document.getElementById('idUser').innerText.replace(/[[\]]/g,'');
 

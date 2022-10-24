@@ -16,6 +16,6 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerSYOUvsL\App_KernelDevDebugContainer([
     'container.build_hash' => 'SYOUvsL',
-    'container.build_id' => '34184029',
-    'container.build_time' => 1666555737,
+    'container.build_id' => '1abfdbbc',
+    'container.build_time' => 1666615464,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerSYOUvsL');

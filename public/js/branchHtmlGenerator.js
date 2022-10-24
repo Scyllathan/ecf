@@ -17,7 +17,7 @@ window.addEventListener('load', () => {
 
             for (let i = 0; i < branches.length; i++) {
                 let userHttpRequest = new XMLHttpRequest();
-                let idUrl = 'http://ecf.localhost/branch/user-id-json/' + branches[i].id;
+                let idUrl = '../../branch/user-id-json/' + branches[i].id;
                 userHttpRequest.open('POST', idUrl, true);
                 userHttpRequest.send();
 

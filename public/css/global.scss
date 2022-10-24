@@ -3,22 +3,19 @@
   src: url('../font/bahnschrift.ttf') format('ttf');
 }
 
-.h-15 {
-  height: 15vh;
-}
-
 .yellow-border {
   border: solid #ffc107;
 }
 
 .font-title {
-  font-family: 'Bahnschrift', 'sans-serif';
+  font-family: 'Bahnschrift', system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .font-brand {
   color: #ffc107;
-  font-family: 'Bahnschrift', 'sans-serif';
+  font-family: 'Bahnschrift', system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-style: italic;
+  font-weight: bold;
 }
 
 @media screen and ( max-width: 576px ) {
@@ -27,7 +24,7 @@
   }
 
   .font-brand {
-    font-size: 4vh;
+    font-size: 5vh;
   }
 
   .h-25 {

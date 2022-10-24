@@ -46,13 +46,13 @@
     font-size: 7vh;
   }
 
-  .h-25 {
-    min-height: 25vh;
+  .h-client-card {
+    min-height: 30vh;
   }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
-  .h-25 {
-    min-height: 30vh;
+  .h-client-card {
+    min-height: 35vh;
   }
 }

@@ -83,49 +83,46 @@ function secureSubmissionGeneretor(client) {
 }
 
 function clientHtmlGenerator(client, logoUrl, url, shortDescription, checked, secureSubmission) {
-    let clientHtml = '<div class="client col-12 col-lg-6">\n' +
-        '    <div class="bg-light yellow-border rounded my-2 my-sm-3 px-1 py-2 p-sm-2 h-25 d-flex\n' +
-        '                                flex-column\n' +
-        '                                justify-content-between">\n' +
-        '        <div class="row">\n' +
-        '            <div class="col-4 col-sm-3">\n' +
-        '                    <img src="'+ logoUrl +'" alt="logo"\n' +
-        '                         width="100" height="100">\n' +
-        '            </div>\n' +
-        '            <div class="col-8 col-sm-9 ">\n' +
-        '                <div>\n' +
-        '                    <p class="id mb-1 ps-2">'+ client.id +'</p>\n' +
-        '                    <h2 class="name mb-1 ps-2 h5 font-title">'+ client.name +'</h2>\n' +
-        '                    <p class="ps-2"><a href="http://' + url + '"\n' +
-        '                                       target="_blank" class="mb-1">' + url + '</a></p>\n' +
-        '                </div>\n' +
-        '            </div>\n' +
-        '        </div>\n' +
-        '        <div class="row">\n' +
-        '            <span class="d-md-inline d-none">\n' +
-        '                <p class="my-1 px-3">' + shortDescription + '\n' +
-        '                </p>\n' +
-        '            </span>\n' +
-        '        </div>\n' +
-        '        <div class="row">\n' +
-        '            <div class="col-4 d-flex justify-content-start">\n' +
-        '                   <form action="../../admin/update-client/'+ client.id +'" method="POST">' +
-        '<div class="form-check form-switch">\n' +
-        '  <input class="form-check-input" type="checkbox" name="active" ' + checked +
-        ' onclick="' + secureSubmission + '">\n' +
-        '  <label class="form-check-label" for="active">Active</label>\n' +
-        '</div>' +
-        '                   </form>' +
-        '            </div>\n' +
-        '            <div class="col-8 d-flex justify-content-end">\n' +
-        '                <a href="../../branch/fiche-client/' + client.id + '" role="button"\n' +
-        '                   class="btn btn-warning me-1 me-sm-0">\n' +
-        '                    Gérer les clubs\n' +
-        '                </a>\n' +
-        '            </div>\n' +
-        '        </div>\n' +
-        '    </div>\n' +
-        '</div>';
+    let clientHtml = `<div class="client col-12 col-lg-6">
+	<div class="bg-light yellow-border rounded my-2 my-sm-3 px-1 p-sm-2 h-client-card d-flex flex-column justify-content-between">
+		<div class="row pt-2 pt-sm-0">
+			<div class="col-4 col-sm-3">
+				<img src="${logoUrl}" alt="logo" width="100" height="100">
+			</div>
+			<div class="col-8 col-sm-9">
+				<div>
+					<p class="id mb-1 ps-2">${client.id}</p>
+					<h2 class="name mb-1 ps-2 h5 font-title">${client.name}</h2>
+					<p class="ps-2">
+						<a href="http://${url}" target="_blank" class="mb-1">${url}</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<span class="d-md-inline d-none">
+				<p class="my-1 px-3">
+					${shortDescription}
+				</p>
+			</span>
+		</div>
+		<div class="row">
+			<div class="col-4 d-flex justify-content-start">
+				<form action="../../admin/update-client/${client.id}" method="POST">
+					<div class="form-check form-switch">
+						<input class="form-check-input" type="checkbox" name="active" ${checked} onclick="${secureSubmission}">
+						<label class="form-check-label" for="active">Active</label>
+					</div>
+				</form>
+			</div>
+			<div class="col-8 d-flex justify-content-end mb-2 mb-sm-0">
+				<a href="../../branch/fiche-client/${client.id}" role="button" class="btn btn-warning me-1 me-sm-0">
+					Gérer les clubs
+				</a>
+			</div>
+		</div>
+	</div>
+</div>`;
 
     return clientHtml;
 }

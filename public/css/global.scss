@@ -3,6 +3,11 @@
   src: url('../font/bahnschrift.ttf') format('ttf');
 }
 
+.bg-sport {
+  background: url('../images/sportive.png');
+  background-position-x: center;
+}
+
 .yellow-border {
   border: solid #ffc107;
 }

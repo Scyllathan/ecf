@@ -30,6 +30,7 @@ class __TwigTemplate_4dbf93d2f8673b8fb471a87e5883ea3e extends Template
             'title' => [$this, 'block_title'],
             'stylesheets' => [$this, 'block_stylesheets'],
             'javascripts' => [$this, 'block_javascripts'],
+            'csslogin' => [$this, 'block_csslogin'],
             'body' => [$this, 'block_body'],
         ];
     }
@@ -72,7 +73,10 @@ class __TwigTemplate_4dbf93d2f8673b8fb471a87e5883ea3e extends Template
         $this->displayBlock('javascripts', $context, $blocks);
         // line 17
         echo "    </head>
-    <body class=\"bg-dark\">
+    <body class=\"bg-dark ";
+        // line 18
+        $this->displayBlock('csslogin', $context, $blocks);
+        echo "\">
     ";
         // line 19
         $this->loadTemplate("default/_navbar.html.twig", "base.html.twig", 19)->display($context);
@@ -188,6 +192,24 @@ class __TwigTemplate_4dbf93d2f8673b8fb471a87e5883ea3e extends Template
 
     }
 
+    // line 18
+    public function block_csslogin($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "csslogin"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "csslogin"));
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
     // line 31
     public function block_body($context, array $blocks = [])
     {
@@ -218,7 +240,7 @@ class __TwigTemplate_4dbf93d2f8673b8fb471a87e5883ea3e extends Template
 
     public function getDebugInfo()
     {
-        return array (  192 => 31,  182 => 16,  172 => 15,  162 => 11,  152 => 10,  133 => 5,  119 => 32,  117 => 31,  114 => 30,  105 => 27,  102 => 26,  97 => 25,  88 => 22,  85 => 21,  80 => 20,  78 => 19,  74 => 17,  72 => 15,  67 => 12,  65 => 10,  61 => 9,  58 => 8,  53 => 5,  47 => 1,);
+        return array (  214 => 31,  196 => 18,  186 => 16,  176 => 15,  166 => 11,  156 => 10,  137 => 5,  123 => 32,  121 => 31,  118 => 30,  109 => 27,  106 => 26,  101 => 25,  92 => 22,  89 => 21,  84 => 20,  82 => 19,  78 => 18,  75 => 17,  73 => 15,  68 => 12,  66 => 10,  62 => 9,  59 => 8,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -240,7 +262,7 @@ class __TwigTemplate_4dbf93d2f8673b8fb471a87e5883ea3e extends Template
         {% block javascripts %}
         {% endblock %}
     </head>
-    <body class=\"bg-dark\">
+    <body class=\"bg-dark {% block csslogin %}{% endblock %}\">
     {% include 'default/_navbar.html.twig' %}
     {% for message in app.flashes('success') %}
         <div class=\"alert alert-success mt-5\">

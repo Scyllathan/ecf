@@ -57,7 +57,7 @@ class __TwigTemplate_5930b81ed5c589b7f064491a3900088c extends Template
         } else {
             // line 10
             echo "                        <img src=\"";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo-100x100.png"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("../../images/logo-100x100.png"), "html", null, true);
             echo "\" alt=\"logo\">
                     ";
         }
@@ -165,7 +165,7 @@ class __TwigTemplate_5930b81ed5c589b7f064491a3900088c extends Template
                         <img src=\"{{ client.logoUrl }}\" alt=\"logo\"
                              width=\"100\" height=\"100\">
                     {% else %}
-                        <img src=\"{{ asset('images/logo-100x100.png') }}\" alt=\"logo\">
+                        <img src=\"{{ asset('../../images/logo-100x100.png') }}\" alt=\"logo\">
                     {% endif %}
                 </div>
                 <div class=\"col mb-2\">

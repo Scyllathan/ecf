@@ -56,9 +56,7 @@ class __TwigTemplate_5930b81ed5c589b7f064491a3900088c extends Template
                     ";
         } else {
             // line 10
-            echo "                        <img src=\"../..";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo-100x100.png"), "html", null, true);
-            echo "\" alt=\"logo\">
+            echo "                        <img src=\"http://calm-chamber-87404.herokuapp.com/images/logo-100X100.png\" alt=\"logo\">
                     ";
         }
         // line 12
@@ -151,7 +149,7 @@ class __TwigTemplate_5930b81ed5c589b7f064491a3900088c extends Template
 
     public function getDebugInfo()
     {
-        return array (  130 => 41,  122 => 36,  119 => 35,  117 => 34,  114 => 33,  105 => 29,  101 => 27,  95 => 25,  93 => 24,  86 => 20,  77 => 16,  73 => 15,  69 => 14,  65 => 12,  59 => 10,  52 => 7,  50 => 6,  43 => 1,);
+        return array (  128 => 41,  120 => 36,  117 => 35,  115 => 34,  112 => 33,  103 => 29,  99 => 27,  93 => 25,  91 => 24,  84 => 20,  75 => 16,  71 => 15,  67 => 14,  63 => 12,  59 => 10,  52 => 7,  50 => 6,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -165,7 +163,7 @@ class __TwigTemplate_5930b81ed5c589b7f064491a3900088c extends Template
                         <img src=\"{{ client.logoUrl }}\" alt=\"logo\"
                              width=\"100\" height=\"100\">
                     {% else %}
-                        <img src=\"../..{{ asset('images/logo-100x100.png') }}\" alt=\"logo\">
+                        <img src=\"http://calm-chamber-87404.herokuapp.com/images/logo-100X100.png\" alt=\"logo\">
                     {% endif %}
                 </div>
                 <div class=\"col mb-2\">

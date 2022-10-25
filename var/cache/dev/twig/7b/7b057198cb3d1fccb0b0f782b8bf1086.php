@@ -66,7 +66,8 @@ class __TwigTemplate_c8ded040cad7d77b117568e9fec335f6 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Liste des partenaires";
+        echo "Fiche de ";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["client"]) || array_key_exists("client", $context) ? $context["client"] : (function () { throw new RuntimeError('Variable "client" does not exist.', 3, $this->source); })()), "name", [], "any", false, false, false, 3), "html", null, true);
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -196,14 +197,14 @@ class __TwigTemplate_c8ded040cad7d77b117568e9fec335f6 extends Template
 
     public function getDebugInfo()
     {
-        return array (  176 => 40,  172 => 39,  168 => 38,  164 => 37,  159 => 36,  149 => 35,  136 => 31,  132 => 30,  118 => 18,  115 => 17,  112 => 16,  110 => 15,  107 => 14,  105 => 13,  101 => 11,  95 => 9,  93 => 8,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
+        return array (  177 => 40,  173 => 39,  169 => 38,  165 => 37,  160 => 36,  150 => 35,  137 => 31,  133 => 30,  119 => 18,  116 => 17,  113 => 16,  111 => 15,  108 => 14,  106 => 13,  102 => 11,  96 => 9,  94 => 8,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}Liste des partenaires{% endblock %}
+{% block title %}Fiche de {{ client.name }}{% endblock %}
 
 {% block body %}
     <div class=\"container-md px-0\">

@@ -117,14 +117,15 @@ class __TwigTemplate_9828ea1d8a629590d8128ef0acd78d7d extends Template
         }
         // line 12
         echo "    <div class=\"container-md d-flex flex-column justify-content-center mt-5\">
-        <h1 class=\"text-center font-brand display-2 my-5\">FITNESS PARK</h1>
+        <h1 class=\"text-center font-brand display-2 mt-5 mb-2\">FITNESS PARK</h1>
+        <h2 class=\"text-center text-light h4 mb-5\">Gestion des franchises</h2>
         <div class=\"container d-flex flex-column align-items-center justify-content-between bg-light rounded\">
             <h2 class=\"h3 mb-3 font-weight-normal mt-5 mb-4 font-title\">Connexion</h2>
             <div class=\"w-co\">
                 <label for=\"inputEmail\" class=\"align-self-start\">Email</label>
                 <input type=\"email\" value=\"";
-        // line 18
-        echo twig_escape_filter($this->env, (isset($context["last_username"]) || array_key_exists("last_username", $context) ? $context["last_username"] : (function () { throw new RuntimeError('Variable "last_username" does not exist.', 18, $this->source); })()), "html", null, true);
+        // line 19
+        echo twig_escape_filter($this->env, (isset($context["last_username"]) || array_key_exists("last_username", $context) ? $context["last_username"] : (function () { throw new RuntimeError('Variable "last_username" does not exist.', 19, $this->source); })()), "html", null, true);
         echo "\" name=\"email\" id=\"inputEmail\" class=\"form-control mb-4\"
                        autocomplete=\"email\" required autofocus>
                 <label for=\"inputPassword\" class=\"align-self-start\">Mot de passe</label>
@@ -133,11 +134,11 @@ class __TwigTemplate_9828ea1d8a629590d8128ef0acd78d7d extends Template
             </div>
             <input type=\"hidden\" name=\"_csrf_token\"
                    value=\"";
-        // line 25
+        // line 26
         echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("authenticate"), "html", null, true);
         echo "\">
             ";
-        // line 36
+        // line 37
         echo "
             <button class=\"btn btn-lg btn-warning mb-5 mt-4\" type=\"submit\">
                 Se connecter
@@ -166,7 +167,7 @@ class __TwigTemplate_9828ea1d8a629590d8128ef0acd78d7d extends Template
 
     public function getDebugInfo()
     {
-        return array (  141 => 36,  137 => 25,  127 => 18,  119 => 12,  113 => 10,  111 => 9,  108 => 8,  98 => 7,  79 => 5,  60 => 3,  37 => 1,);
+        return array (  142 => 37,  138 => 26,  128 => 19,  119 => 12,  113 => 10,  111 => 9,  108 => 8,  98 => 7,  79 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -183,7 +184,8 @@ class __TwigTemplate_9828ea1d8a629590d8128ef0acd78d7d extends Template
         <div class=\"alert alert-danger\">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
     <div class=\"container-md d-flex flex-column justify-content-center mt-5\">
-        <h1 class=\"text-center font-brand display-2 my-5\">FITNESS PARK</h1>
+        <h1 class=\"text-center font-brand display-2 mt-5 mb-2\">FITNESS PARK</h1>
+        <h2 class=\"text-center text-light h4 mb-5\">Gestion des franchises</h2>
         <div class=\"container d-flex flex-column align-items-center justify-content-between bg-light rounded\">
             <h2 class=\"h3 mb-3 font-weight-normal mt-5 mb-4 font-title\">Connexion</h2>
             <div class=\"w-co\">

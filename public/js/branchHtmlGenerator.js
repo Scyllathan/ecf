@@ -256,9 +256,8 @@ function branchHtmlGenerator(branch, logoUrl, installPerm, checked, secureSubmis
     <div class="col-12">
         <div class="bg-light yellow-border rounded mt-2 mt-sm-3 p-3">
             <div class="row mb-2">
-                <div  class="col-5 col-lg-2 col-md-3 col-sm-4 mb-2">
-                        <img src="${logoUrl}" alt="logo"
-                             width="100" height="100">
+                <div class="col-5 col-lg-2 col-md-3 col-sm-4 mb-2">
+                    <img src="${logoUrl}" alt="logo" width="100" height="100">
                 </div>
                 <div class="col mb-2">
                     <h2 class="mb-1 px-2 h5 font-title"><b>${branch.client.name} - ${branch.name}</b></h2>

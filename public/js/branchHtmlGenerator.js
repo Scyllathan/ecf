@@ -70,7 +70,7 @@ function logoUrlGenerator(branch) {
     if (branch.client.logoUrl !== null) {
         logoUrl = branch.client.logoUrl;
     } else {
-        logoUrl = '/images/logo-100X100.png';
+        logoUrl = '../images/logo-100X100.png';
     }
     return logoUrl;
 }

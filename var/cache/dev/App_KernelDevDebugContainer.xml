@@ -933,7 +933,6 @@
         <argument>C:\xampp\apps\ecf\vendor\symfony\security-core/Resources/translations</argument>
       </argument>
       <argument type="collection">
-        <argument>C:\xampp\apps\ecf/vendor/knplabs/knp-paginator-bundle/templates</argument>
         <argument>C:\xampp\apps\ecf\vendor\symfony\twig-bridge/Resources/views/Email</argument>
         <argument>C:\xampp\apps\ecf\vendor\symfony\twig-bridge/Resources/views/Form</argument>
       </argument>
@@ -960,7 +959,6 @@
         <argument>C:\xampp\apps\ecf\vendor\symfony\security-core/Resources/translations</argument>
       </argument>
       <argument type="collection">
-        <argument>C:\xampp\apps\ecf/vendor/knplabs/knp-paginator-bundle/templates</argument>
         <argument>C:\xampp\apps\ecf\vendor\symfony\twig-bridge/Resources/views/Email</argument>
         <argument>C:\xampp\apps\ecf\vendor\symfony\twig-bridge/Resources/views/Form</argument>
       </argument>
@@ -4227,7 +4225,6 @@
     <service id="twig.template_iterator" class="Symfony\Bundle\TwigBundle\TemplateIterator">
       <argument type="service" id="kernel"/>
       <argument type="collection">
-        <argument key="C:\xampp\apps\ecf/vendor/knplabs/knp-paginator-bundle/templates">KnpPaginator</argument>
         <argument key="C:\xampp\apps\ecf\vendor\symfony\twig-bridge/Resources/views/Email">email</argument>
         <argument key="C:\xampp\apps\ecf\vendor\symfony\twig-bridge/Resources/views/Form">null</argument>
       </argument>
@@ -4244,10 +4241,6 @@
       <tag name="twig.loader"/>
       <argument type="collection"/>
       <argument>C:\xampp\apps\ecf</argument>
-      <call method="addPath">
-        <argument>C:\xampp\apps\ecf/vendor/knplabs/knp-paginator-bundle/templates</argument>
-        <argument>KnpPaginator</argument>
-      </call>
       <call method="addPath">
         <argument>C:\xampp\apps\ecf\vendor\symfony\security-bundle/Resources/views</argument>
         <argument>Security</argument>

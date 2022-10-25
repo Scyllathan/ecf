@@ -5048,3 +5048,17 @@ d91578,::1,POST,http://ecf.localhost/branch/branch-list-json/35323131-3963-3935-
 2af120,::1,POST,http://ecf.localhost/branch/branch-list-json/35323131-3963-3935-2d34-3666662d3131,1666694048,,200
 775071,::1,GET,http://ecf.localhost/branch/fiche-client/35323131-3963-3935-2d34-3666662d3131,1666694060,,200
 35e5a2,::1,POST,http://ecf.localhost/branch/branch-list-json/35323131-3963-3935-2d34-3666662d3131,1666694062,,200
+46c505,::1,GET,http://ecf.localhost/branch/fiche-client/35323131-3963-3935-2d34-3666662d3131,1666694413,,200
+73cb63,::1,GET,http://ecf.localhost/branch/images/logo-100x100.png,1666694413,ad928b,404
+ad928b,::1,GET,http://ecf.localhost/branch/images/logo-100x100.png,1666694413,,404
+e04f63,::1,POST,http://ecf.localhost/branch/branch-list-json/35323131-3963-3935-2d34-3666662d3131,1666694417,,200
+8dbe1c,::1,GET,http://ecf.localhost/branch/fiche-client/35323131-3963-3935-2d34-3666662d3131,1666694425,,200
+68083f,::1,POST,http://ecf.localhost/branch/branch-list-json/35323131-3963-3935-2d34-3666662d3131,1666694427,,200
+ba9aa7,::1,GET,http://ecf.localhost/branch/fiche-client/35323131-3963-3935-2d34-3666662d3131,1666694530,,200
+2c42a1,::1,GET,http://ecf.localhost/branch/images/logo-100x100.png,1666694530,504c39,404
+504c39,::1,GET,http://ecf.localhost/branch/images/logo-100x100.png,1666694530,,404
+23f50b,::1,POST,http://ecf.localhost/branch/branch-list-json/35323131-3963-3935-2d34-3666662d3131,1666694532,,200
+2f6647,::1,GET,http://ecf.localhost/branch/fiche-client/35323131-3963-3935-2d34-3666662d3131,1666694596,,200
+0dff79,::1,POST,http://ecf.localhost/branch/branch-list-json/35323131-3963-3935-2d34-3666662d3131,1666694598,,200
+404e43,::1,GET,http://ecf.localhost/branch/fiche-client/35323131-3963-3935-2d34-3666662d3131,1666695033,,200
+fe7efa,::1,POST,http://ecf.localhost/branch/branch-list-json/35323131-3963-3935-2d34-3666662d3131,1666695035,,200

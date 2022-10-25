@@ -5175,3 +5175,6 @@ ad5293,::1,GET,http://ecf.localhost/branch/fiche-client/35323131-3963-3935-2d34-
 58268d,::1,GET,http://ecf.localhost/branch/fiche-client/35323131-3963-3935-2d34-3666662d3131,1666698170,,200
 68f758,::1,POST,http://ecf.localhost/branch/branch-list-json/35323131-3963-3935-2d34-3666662d3131,1666698172,,200
 49ea8a,::1,POST,http://ecf.localhost/branch/user-id-json/8,1666698173,,200
+c171b3,::1,GET,http://ecf.localhost/branch/fiche-client/35323131-3963-3935-2d34-3666662d3131,1666698352,,200
+913c44,::1,POST,http://ecf.localhost/branch/branch-list-json/35323131-3963-3935-2d34-3666662d3131,1666698354,,200
+a35d5c,::1,POST,http://ecf.localhost/branch/user-id-json/8,1666698355,,200

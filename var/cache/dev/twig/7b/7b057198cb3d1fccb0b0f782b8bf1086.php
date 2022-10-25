@@ -121,7 +121,7 @@ class __TwigTemplate_c8ded040cad7d77b117568e9fec335f6 extends Template
 
         <div class=\"row\">
             <!-- Emplacement pagination -->
-            <nav class=\"pagination-container d-flex justify-content-center\">
+            <nav class=\"pagination-container d-flex justify-content-center mt-2\">
                 <div id=\"pagination-numbers\">
 
                 </div>
@@ -224,7 +224,7 @@ class __TwigTemplate_c8ded040cad7d77b117568e9fec335f6 extends Template
 
         <div class=\"row\">
             <!-- Emplacement pagination -->
-            <nav class=\"pagination-container d-flex justify-content-center\">
+            <nav class=\"pagination-container d-flex justify-content-center mt-2\">
                 <div id=\"pagination-numbers\">
 
                 </div>

@@ -36,14 +36,14 @@ window.addEventListener('load', () => {
                         let logoUrl = logoUrlGenerator(branches[i]);
                         let installPerm = installPermGenerator(branches[i]);
                         let checked = checkedGenerator(branches[i]);
-                        let installPermForm1 = installPerm1FormGenerator(branches[i], roleAdmin);
-                        let installPermForm2 = installPermForm2Generator(branches[i], roleAdmin)
                         let secureSubmission = secureSubmissionGenerator(branches[i]);
                         let clientGrantsForm = clientGrantsFormGenerator(branches[i], checked, secureSubmission, roleAdmin);
 
                         if (roleAdmin > -1 || roleClient > -1 || (roleBranch > -1 && parseInt(branchUserId) === parseInt(idUser))) {
                             branchList.innerHTML += branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
-                            if (branches[i].installPerm) {
+                            if (branches[i].installPerm !== null) {
+                                let installPermForm1 = installPerm1FormGenerator(branches[i], roleAdmin);
+                                let installPermForm2 = installPermForm2Generator(branches[i], roleAdmin);
                                 branchList.innerHTML += installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
                             }
                         }
@@ -70,7 +70,7 @@ function logoUrlGenerator(branch) {
     if (branch.client.logoUrl !== null) {
         logoUrl = branch.client.logoUrl;
     } else {
-        logoUrl = '../images/logo-100X100.png';
+        logoUrl = '../../images/logo-100X100.png';
     }
     return logoUrl;
 }
@@ -88,8 +88,10 @@ function installPermGenerator(branch) {
 
 function checkedGenerator(branch) {
     let checked;
-    if(branch.clientGrants.active) {
-        checked = 'checked';
+    if (branch.clientGrants !== null) {
+        if(branch.clientGrants.active) {
+            checked = 'checked';
+        }
     } else {
         checked = '';
     }
@@ -97,11 +99,13 @@ function checkedGenerator(branch) {
 }
 
 function secureSubmissionGenerator(branch) {
-    let secureSubmission;
-    if (branch.clientGrants.active) {
-        secureSubmission = `if (confirm('Êtes-vous sûr de vouloir désactiver l\\'intégration de ${branch.client.name} au club ${branch.name} ?')) { submit();}`;
-    } else {
-        secureSubmission = `if (confirm('Êtes-vous sûr de vouloir activer l\\'intégration de ${branch.client.name} au club ${branch.name} ?')) { submit();}`;
+    let secureSubmission = '';
+    if (branch.clientGrants !== null) {
+        if (branch.clientGrants.active) {
+            secureSubmission = `if (confirm('Êtes-vous sûr de vouloir désactiver l\\'intégration de ${branch.client.name} au club ${branch.name} ?')) { submit();}`;
+        } else {
+            secureSubmission = `if (confirm('Êtes-vous sûr de vouloir activer l\\'intégration de ${branch.client.name} au club ${branch.name} ?')) { submit();}`;
+        }
     }
     return secureSubmission;
 }
@@ -114,7 +118,7 @@ function clientGrantsFormGenerator(branch, checked, secureSubmission, roleAdmin)
     } else {
         disabled = 'disabled';
     }
-    if (branch.clientGrants) {
+    if (branch.clientGrants !== null) {
         clientsGrantsForm = `<div class="row px-2"><form action="../../admin/update-client-grants/${branch.clientGrants.id}" method="POST">
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="active" ${checked} onclick="${secureSubmission}" ${disabled}>

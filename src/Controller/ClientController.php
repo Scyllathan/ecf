@@ -436,7 +436,8 @@ class ClientController extends AbstractController
                         ->setMembersSchedulesWrite($perms['membersSchedulesWrite'])
                         ->setPaymentDayRead($perms['paymentDayRead'])
                         ->setClient($clientGrants[0]->getClient())
-                        ->setBranch($branch);
+                        ->setBranch($branch)
+                        ->setClientGrants($clientGrants[0]);
                     $entityManager->persist($installPerm);
                     $entityManager->flush();
 

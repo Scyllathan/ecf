@@ -31,6 +31,9 @@ class ClientGrants
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $token = null;
 
+    #[ORM\OneToMany(mappedBy: 'clientGrants', targetEntity: InstallPerm::class, orphanRemoval: true)]
+    private Collection $installPerms;
+
     public function __construct()
     {
         $this->installPerms = new ArrayCollection();
@@ -116,6 +119,36 @@ class ClientGrants
     public function setToken(?string $token): self
     {
         $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, InstallPerm>
+     */
+    public function getInstallPerms(): Collection
+    {
+        return $this->installPerms;
+    }
+
+    public function addInstallPerm(InstallPerm $installPerm): self
+    {
+        if (!$this->installPerms->contains($installPerm)) {
+            $this->installPerms->add($installPerm);
+            $installPerm->setClientGrants($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInstallPerm(InstallPerm $installPerm): self
+    {
+        if ($this->installPerms->removeElement($installPerm)) {
+            // set the owning side to null (unless already changed)
+            if ($installPerm->getClientGrants() === $this) {
+                $installPerm->setClientGrants(null);
+            }
+        }
 
         return $this;
     }

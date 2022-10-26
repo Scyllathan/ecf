@@ -51,6 +51,10 @@ class InstallPerm
     #[ORM\JoinColumn(nullable: false)]
     private ?Branch $branch = null;
 
+    #[ORM\ManyToOne(inversedBy: 'installPerms')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?ClientGrants $clientGrants = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -196,6 +200,18 @@ class InstallPerm
     public function setBranch(Branch $branch): self
     {
         $this->branch = $branch;
+
+        return $this;
+    }
+
+    public function getClientGrants(): ?ClientGrants
+    {
+        return $this->clientGrants;
+    }
+
+    public function setClientGrants(?ClientGrants $clientGrants): self
+    {
+        $this->clientGrants = $clientGrants;
 
         return $this;
     }

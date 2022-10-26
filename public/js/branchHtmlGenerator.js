@@ -161,7 +161,7 @@ function installPerm1FormGenerator(branch, roleAdmin) {
         membersPaymentSchedulesRead = 'checked';
     }
 
-    let installPermForm = `<form class="mb-3" action="../../admin/update-install-perm1/${branch.installPerm.id}" method="POST">
+    let installPermForm = `<form class="mb-3" action="../../admin/update-install-perm1/${branch.installPerm.id}" method="POST" target="_blank">
                                 <div class="form-check form-switch mb-2">
                                     <input type="checkbox" class="form-check-input" id="membersRead" name="membersRead"
                                            ${membersReadChecked} ${disabled} onclick="submit()">
@@ -224,7 +224,7 @@ function installPermForm2Generator(branch, roleAdmin) {
     }
 
     let installPermForm = `<div class="col-12 col-md-6 mb-2">
-                            <form class="mb-3" action="../../admin/update-install-perm2/${branch.installPerm.id}" method="POST">
+                            <form class="mb-3" action="../../admin/update-install-perm2/${branch.installPerm.id}" method="POST" target="_blank">
                                 <div class="form-check form-switch mb-2">
                                     <input type="checkbox" class="form-check-input" id="membersStatisticRead" name="membersStatisticRead"
                                            ${membersStatisticRead} ${disabled} onclick="submit()">

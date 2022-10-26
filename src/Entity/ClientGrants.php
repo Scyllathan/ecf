@@ -28,6 +28,9 @@ class ClientGrants
     #[ORM\OneToMany(mappedBy: 'clientGrants', targetEntity: Branch::class)]
     private Collection $branch;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $token = null;
+
     public function __construct()
     {
         $this->installPerms = new ArrayCollection();
@@ -101,6 +104,18 @@ class ClientGrants
                 $branch->setClientGrants(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
 
         return $this;
     }

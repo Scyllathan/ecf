@@ -57,6 +57,7 @@ return [
                     .'|branch\\-list\\-json/([^/]++)(*:428)'
                     .'|user\\-id\\-json/([^/]++)(*:459)'
                 .')'
+                .'|/client/creer\\-permissions/([^/]++)(*:503)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -75,8 +76,9 @@ return [
         351 => [[['_route' => 'app_new_client_grants', '_controller' => 'App\\Controller\\ClientController::addClientGrants'], ['id'], null, null, false, true, null]],
         393 => [[['_route' => 'app_client', '_controller' => 'App\\Controller\\ClientController::clientDetail'], ['id'], null, null, false, true, null]],
         428 => [[['_route' => 'app_default_branchlistjson', '_controller' => 'App\\Controller\\DefaultController::branchListJson'], ['id'], null, null, false, true, null]],
-        459 => [
-            [['_route' => 'app_default_useridjson', '_controller' => 'App\\Controller\\DefaultController::userIdJson'], ['id'], null, null, false, true, null],
+        459 => [[['_route' => 'app_default_useridjson', '_controller' => 'App\\Controller\\DefaultController::userIdJson'], ['id'], null, null, false, true, null]],
+        503 => [
+            [['_route' => 'app_create_perms', '_controller' => 'App\\Controller\\ClientController::createInstallPerm'], ['token'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

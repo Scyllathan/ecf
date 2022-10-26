@@ -119,19 +119,11 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
-     * @default {"enabled":false}
-     * @return \Symfony\Config\TwigExtra\CssinlinerConfig|$this
-     */
-    public function cssinliner(mixed $value = []): \Symfony\Config\TwigExtra\CssinlinerConfig|static
+     * @default {"enabled":true}
+    */
+    public function cssinliner(array $value = []): \Symfony\Config\TwigExtra\CssinlinerConfig
     {
-        if (!\is_array($value)) {
-            $this->_usedProperties['cssinliner'] = true;
-            $this->cssinliner = $value;
-
-            return $this;
-        }
-
-        if (!$this->cssinliner instanceof \Symfony\Config\TwigExtra\CssinlinerConfig) {
+        if (null === $this->cssinliner) {
             $this->_usedProperties['cssinliner'] = true;
             $this->cssinliner = new \Symfony\Config\TwigExtra\CssinlinerConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -142,19 +134,11 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
 
     /**
-     * @default {"enabled":false}
-     * @return \Symfony\Config\TwigExtra\InkyConfig|$this
-     */
-    public function inky(mixed $value = []): \Symfony\Config\TwigExtra\InkyConfig|static
+     * @default {"enabled":true}
+    */
+    public function inky(array $value = []): \Symfony\Config\TwigExtra\InkyConfig
     {
-        if (!\is_array($value)) {
-            $this->_usedProperties['inky'] = true;
-            $this->inky = $value;
-
-            return $this;
-        }
-
-        if (!$this->inky instanceof \Symfony\Config\TwigExtra\InkyConfig) {
+        if (null === $this->inky) {
             $this->_usedProperties['inky'] = true;
             $this->inky = new \Symfony\Config\TwigExtra\InkyConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -220,13 +204,13 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 
         if (array_key_exists('cssinliner', $value)) {
             $this->_usedProperties['cssinliner'] = true;
-            $this->cssinliner = \is_array($value['cssinliner']) ? new \Symfony\Config\TwigExtra\CssinlinerConfig($value['cssinliner']) : $value['cssinliner'];
+            $this->cssinliner = new \Symfony\Config\TwigExtra\CssinlinerConfig($value['cssinliner']);
             unset($value['cssinliner']);
         }
 
         if (array_key_exists('inky', $value)) {
             $this->_usedProperties['inky'] = true;
-            $this->inky = \is_array($value['inky']) ? new \Symfony\Config\TwigExtra\InkyConfig($value['inky']) : $value['inky'];
+            $this->inky = new \Symfony\Config\TwigExtra\InkyConfig($value['inky']);
             unset($value['inky']);
         }
 
@@ -257,10 +241,10 @@ class TwigExtraConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $output['intl'] = $this->intl instanceof \Symfony\Config\TwigExtra\IntlConfig ? $this->intl->toArray() : $this->intl;
         }
         if (isset($this->_usedProperties['cssinliner'])) {
-            $output['cssinliner'] = $this->cssinliner instanceof \Symfony\Config\TwigExtra\CssinlinerConfig ? $this->cssinliner->toArray() : $this->cssinliner;
+            $output['cssinliner'] = $this->cssinliner->toArray();
         }
         if (isset($this->_usedProperties['inky'])) {
-            $output['inky'] = $this->inky instanceof \Symfony\Config\TwigExtra\InkyConfig ? $this->inky->toArray() : $this->inky;
+            $output['inky'] = $this->inky->toArray();
         }
         if (isset($this->_usedProperties['string'])) {
             $output['string'] = $this->string instanceof \Symfony\Config\TwigExtra\StringConfig ? $this->string->toArray() : $this->string;

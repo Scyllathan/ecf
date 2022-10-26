@@ -24,6 +24,7 @@ return [
     'app_update_install_perm1' => [['id'], ['_controller' => 'App\\Controller\\ClientController::updateInstallPerm1'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/update-install-perm1']], [], [], []],
     'app_update_install_perm2' => [['id'], ['_controller' => 'App\\Controller\\ClientController::updateInstallPerm2'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/update-install-perm2']], [], [], []],
     'app_new_client_grants' => [['id'], ['_controller' => 'App\\Controller\\ClientController::addClientGrants'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/ajouter-contrat']], [], [], []],
+    'app_create_perms' => [['token'], ['_controller' => 'App\\Controller\\ClientController::createInstallPerm'], [], [['variable', '/', '[^/]++', 'token', true], ['text', '/client/creer-permissions']], [], [], []],
     'app_default' => [[], ['_controller' => 'App\\Controller\\DefaultController::index'], [], [['text', '/']], [], [], []],
     'app_change_password' => [[], ['_controller' => 'App\\Controller\\DefaultController::changePassword'], [], [['text', '/branch/modif-mot-de-passe']], [], [], []],
     'app_default_clientlistjson' => [[], ['_controller' => 'App\\Controller\\DefaultController::clientListJson'], [], [['text', '/admin/client-list-json']], [], [], []],

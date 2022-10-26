@@ -19,16 +19,18 @@
     </head>
     <body class="bg-dark {% block csslogin %}{% endblock %}">
     {% include 'default/_navbar.html.twig' %}
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success mt-5">
-            {{ message }}
-        </div>
-    {% endfor %}
-    {% for message in app.flashes('alert') %}
-        <div class="alert alert-danger mt-5">
-            {{ message }}
-        </div>
-    {% endfor %}
+    <div class="mt-5">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('alert') %}
+            <div class="alert alert-danger mt-5">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
     <div class="mb-4">
         {% block body %}{% endblock %}
     </div>

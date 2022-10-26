@@ -67,10 +67,10 @@ class ClientGrants extends \App\Entity\ClientGrants implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'id', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'active', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'perms', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'client', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'branch'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'id', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'active', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'perms', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'client', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'branch', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'token'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'id', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'active', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'perms', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'client', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'branch'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'id', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'active', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'perms', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'client', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'branch', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'token'];
     }
 
     /**
@@ -289,6 +289,28 @@ class ClientGrants extends \App\Entity\ClientGrants implements \Doctrine\ORM\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeBranch', [$branch]);
 
         return parent::removeBranch($branch);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getToken(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getToken', []);
+
+        return parent::getToken();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setToken(?string $token): \App\Entity\ClientGrants
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setToken', [$token]);
+
+        return parent::setToken($token);
     }
 
 }

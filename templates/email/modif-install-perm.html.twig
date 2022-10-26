@@ -1,0 +1,37 @@
+{% apply inky_to_html|inline_css(source('@css/foundation-emails.scss')) %}
+    <container>
+        <row>
+            <colums>
+                <div style="background: #212529">
+                    <h1 class="text-center" style="color: #FFC107"><b><i>FITNESS PARK</i></b></h1>
+                </div>
+
+                <h4 class="text-center">Gestion des permissions</h4>
+            </colums>
+        </row>
+        <spacer size="24"></spacer>
+        <row>
+            <colums>
+                <p>Bonjour,</p>
+            </colums>
+        </row>
+        <spacer size="16"></spacer>
+        <row>
+            <colums>
+                <p>Nous vous informons que votre structure <b>{{ client.name }} - {{ branch.name }}</b> a subi la
+                                                                               modification
+                    suivante :</p>
+            </colums>
+        </row>
+        <spacer size="16"></spacer>
+        <row>
+            <colums>
+                {% if change.value == 'true' %}
+                    - Votre permission <b>"{{ change.permission }}"</b> a été activée.
+                {% else %}
+                    - Votre permission <b>"{{ change.permission }}"</b> a été désactivée.
+                {% endif %}
+            </colums>
+        </row>
+    </container>
+{% endapply %}

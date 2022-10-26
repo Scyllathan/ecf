@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '1c7c6a1087615ec8096c53c6881275bcd5bea159',
+        'reference' => '57b0a2de1bd8fac1dc6d1538c43c508c8a08cc04',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '1c7c6a1087615ec8096c53c6881275bcd5bea159',
+            'reference' => '57b0a2de1bd8fac1dc6d1538c43c508c8a08cc04',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -208,6 +208,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'lorenzo/pinky' => array(
+            'pretty_version' => '1.0.7',
+            'version' => '1.0.7.0',
+            'reference' => '60afc9f8c2b8fb6a2f77050b485ce93143dd8dcf',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../lorenzo/pinky',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'monolog/monolog' => array(
             'pretty_version' => '3.2.0',
             'version' => '3.2.0.0',
@@ -230,6 +239,18 @@
             'dev_requirement' => false,
             'replaced' => array(
                 0 => '^2.1',
+            ),
+        ),
+        'php-http/async-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '*',
+            ),
+        ),
+        'php-http/client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '*',
             ),
         ),
         'psr/cache' => array(
@@ -272,6 +293,12 @@
             'dev_requirement' => false,
         ),
         'psr/event-dispatcher-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
+        ),
+        'psr/http-client-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
@@ -365,6 +392,15 @@
             'reference' => '17524a64ebcfab68d237bbed247e9a9917747096',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/css-selector' => array(
+            'pretty_version' => 'v6.1.3',
+            'version' => '6.1.3.0',
+            'reference' => '0dd5e36b80e1de97f8f74ed7023ac2b837a36443',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/css-selector',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -481,6 +517,30 @@
             'install_path' => __DIR__ . '/../symfony/framework-bundle',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'symfony/http-client' => array(
+            'pretty_version' => 'v6.1.6',
+            'version' => '6.1.6.0',
+            'reference' => 'c8c887f4813370550147afd27d9eb8a8523e53b2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/http-client',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/http-client-contracts' => array(
+            'pretty_version' => 'v3.1.1',
+            'version' => '3.1.1.0',
+            'reference' => 'fd038f08c623ab5d22b26e9ba35afe8c79071800',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/http-client-contracts',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/http-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '3.0',
+            ),
         ),
         'symfony/http-foundation' => array(
             'pretty_version' => 'v6.1.5',
@@ -887,12 +947,39 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'tijsverkoyen/css-to-inline-styles' => array(
+            'pretty_version' => '2.2.5',
+            'version' => '2.2.5.0',
+            'reference' => '4348a3a06651827a27d989ad1d13efec6bb49b19',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../tijsverkoyen/css-to-inline-styles',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'twig/cssinliner-extra' => array(
+            'pretty_version' => 'v3.4.0',
+            'version' => '3.4.0.0',
+            'reference' => '1fe012dcae6b04fc37715296c10a72f8d941bc65',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twig/cssinliner-extra',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'twig/extra-bundle' => array(
             'pretty_version' => 'v3.4.0',
             'version' => '3.4.0.0',
             'reference' => '2e58256b0e9fe52f30149347c0547e4633304765',
             'type' => 'symfony-bundle',
             'install_path' => __DIR__ . '/../twig/extra-bundle',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'twig/inky-extra' => array(
+            'pretty_version' => 'v3.4.0',
+            'version' => '3.4.0.0',
+            'reference' => 'b515e6f7c1fede76f9f507dbd1bb369f46aa726b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twig/inky-extra',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

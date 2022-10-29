@@ -25,8 +25,6 @@ httpRequest.onreadystatechange = function() {
         const paginationNumbers = document.getElementById("pagination-numbers");
         const paginatedList = document.getElementById("clientList");
         const listItems = [...clientList.getElementsByClassName('client')];
-        const nextButton = document.getElementById("next-button");
-        const prevButton = document.getElementById("prev-button");
 
         const paginationLimit = 6;
         const pageCount = Math.ceil(listItems.length / paginationLimit);

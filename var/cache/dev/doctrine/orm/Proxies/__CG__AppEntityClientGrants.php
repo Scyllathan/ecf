@@ -67,10 +67,10 @@ class ClientGrants extends \App\Entity\ClientGrants implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'id', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'active', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'perms', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'client', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'branch', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'token'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'id', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'active', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'perms', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'client', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'branch', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'token', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'installPerms'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'id', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'active', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'perms', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'client', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'branch', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'token'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'id', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'active', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'perms', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'client', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'branch', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'token', '' . "\0" . 'App\\Entity\\ClientGrants' . "\0" . 'installPerms'];
     }
 
     /**
@@ -311,6 +311,39 @@ class ClientGrants extends \App\Entity\ClientGrants implements \Doctrine\ORM\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setToken', [$token]);
 
         return parent::setToken($token);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getInstallPerms(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInstallPerms', []);
+
+        return parent::getInstallPerms();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addInstallPerm(\App\Entity\InstallPerm $installPerm): \App\Entity\ClientGrants
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addInstallPerm', [$installPerm]);
+
+        return parent::addInstallPerm($installPerm);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeInstallPerm(\App\Entity\InstallPerm $installPerm): \App\Entity\ClientGrants
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeInstallPerm', [$installPerm]);
+
+        return parent::removeInstallPerm($installPerm);
     }
 
 }

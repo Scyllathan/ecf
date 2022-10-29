@@ -18,10 +18,15 @@ function activeStatus() {
             let clientGrantsForm = clientGrantsFormGenerator(branches[i], checked, secureSubmission, roleAdmin);
 
             if (branches[i].clientGrants.active) {
-                branchList.innerHTML = branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
-                if (branches[i].installPerm) {
-                    branchList.innerHTML += installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
+                let branchElement= branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
+                let installPermElement = '';
+                if (branches[i].installPerm !== null) {
+                    installPermElement = installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
                 }
+                branchList.innerHTML += `<div class="branch">
+                                                        ${branchElement}
+                                                        ${installPermElement}
+                                                    </div>`;
             }
         }
     }
@@ -57,10 +62,15 @@ function inactiveStatus() {
             let clientGrantsForm = clientGrantsFormGenerator(branches[i], checked, secureSubmission, roleAdmin);
 
             if (!branches[i].clientGrants.active) {
-                branchList.innerHTML = branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
-                if (branches[i].installPerm) {
-                    branchList.innerHTML += installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
+                let branchElement= branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
+                let installPermElement = '';
+                if (branches[i].installPerm !== null) {
+                    installPermElement = installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
                 }
+                branchList.innerHTML += `<div class="branch">
+                                                        ${branchElement}
+                                                        ${installPermElement}
+                                                    </div>`;
             }
         }
     }
@@ -94,10 +104,15 @@ function allStatus() {
         let secureSubmission = secureSubmissionGenerator(branches[i]);
         let clientGrantsForm = clientGrantsFormGenerator(branches[i], checked, secureSubmission, roleAdmin);
 
-        branchList.innerHTML += branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
-        if (branches[i].installPerm) {
-            branchList.innerHTML += installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
+        let branchElement= branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
+        let installPermElement = '';
+        if (branches[i].installPerm !== null) {
+            installPermElement = installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
         }
+        branchList.innerHTML += `<div class="branch">
+                                                        ${branchElement}
+                                                        ${installPermElement}
+                                                    </div>`;
     }
 
     const paginationNumbers = document.getElementById("pagination-numbers");

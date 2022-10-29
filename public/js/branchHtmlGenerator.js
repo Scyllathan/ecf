@@ -40,12 +40,17 @@ window.addEventListener('load', () => {
                         let clientGrantsForm = clientGrantsFormGenerator(branches[i], checked, secureSubmission, roleAdmin);
 
                         if (roleAdmin > -1 || roleClient > -1 || (roleBranch > -1 && parseInt(branchUserId) === parseInt(idUser))) {
-                            branchList.innerHTML += branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
+                            let branchElement= branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
+                            let installPermElement = '';
                             if (branches[i].installPerm !== null) {
                                 let installPermForm1 = installPerm1FormGenerator(branches[i], roleAdmin);
                                 let installPermForm2 = installPermForm2Generator(branches[i], roleAdmin);
-                                branchList.innerHTML += installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
+                                installPermElement = installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
                             }
+                            branchList.innerHTML += `<div class="branch">
+                                                        ${branchElement}
+                                                        ${installPermElement}
+                                                    </div>`;
                         }
                         const paginationNumbers = document.getElementById("pagination-numbers");
                         const paginatedList = document.getElementById("branchList");
@@ -53,6 +58,7 @@ window.addEventListener('load', () => {
 
                         const paginationLimit = 2;
                         const pageCount = Math.ceil(listItems.length / paginationLimit);
+                        let currentPage;
 
                         getPaginationNumbers(pageCount, paginationNumbers, paginationLimit, listItems);
                         setCurrentPage(1, paginationLimit, listItems);
@@ -256,7 +262,7 @@ function installPermForm2Generator(branch, roleAdmin) {
 }
 
 function branchHtmlGenerator(branch, logoUrl, installPerm, checked, secureSubmission, clientGrantsForm) {
-    let branchHtml = `<div class="row d-flex justify-content-center gx-5 px-sm-5 branch">
+    let branchHtml = `<div class="row d-flex justify-content-center gx-5 px-sm-5">
     <div class="col-12">
         <div class="bg-light yellow-border rounded mt-2 mt-sm-3 p-3">
             <div class="row mb-2">

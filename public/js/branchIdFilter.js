@@ -22,10 +22,15 @@ function branchIdFilter() {
         let clientGrantsForm = clientGrantsFormGenerator(branches[i], checked, secureSubmission, roleAdmin);
 
         if (text.indexOf(branchFilter) > -1) {
-            branchList.innerHTML += branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
-            if (branches[i].installPerm) {
-                branchList.innerHTML += installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
+            let branchElement= branchHtmlGenerator(branches[i], logoUrl, installPerm, checked, secureSubmission, clientGrantsForm);
+            let installPermElement = '';
+            if (branches[i].installPerm !== null) {
+                installPermElement = installPermHtmlGenerator(branches[i], installPermForm1, installPermForm2);
             }
+            branchList.innerHTML += `<div class="branch">
+                                                        ${branchElement}
+                                                        ${installPermElement}
+                                                    </div>`;
         }
     }
 

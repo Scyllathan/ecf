@@ -49,6 +49,12 @@ class DefaultController extends AbstractController
                 $repository = $entityManager->getRepository(Client::class);
                 $client = $repository->findBy(array('user' => $this->getUser()->getId()));
 
+                if (!$client[0]->isActive()) {
+                    $client[0]->setActive(true);
+                    $entityManager->persist($client[0]);
+                    $entityManager->flush();
+                }
+
                 return $this->redirectToRoute('app_client', ['id' => $client[0]->getId()]);
             } else {
                 $entityManager = $this->doctrine->getManager();
